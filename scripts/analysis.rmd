@@ -1,0 +1,75 @@
+---
+title: "<CHANGE ME>"
+author: "Paul Williams"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# <CHANGE ME>
+
+- https://yihui.org/knitr/options/#chunk_options
+- https://kbroman.org/knitr_knutshell/pages/Rmarkdown.html
+
+## Setup
+
+```{r setup-chunks, include=FALSE}
+knitr::opts_chunk$set(
+  echo=TRUE,
+  warning=FALSE,
+  message=FALSE,
+  dev="svg"
+)
+```
+
+## Installing packages
+
+```{r install-packages, eval=FALSE, include=FALSE}
+install.packages("tidyverse")
+install.packages("ggplot2")
+install.packages("svglite") # apt: libfontconfig1-dev
+```
+
+## <CHANGE ME>
+
+```{r <CHANGE ME>}
+library("readr")
+
+data <- read_csv("../data/CHANGE-ME.csv")
+
+print(data)
+```
+
+## <CHANGE ME>
+
+```{r <CHANGE ME>}
+library('ggplot2')
+library('svglite')
+
+ggplot(data) +
+  geom_col(aes(x=name, y=age)) +
+  theme_bw() +
+  theme(
+    legend.position="none",
+    panel.border = element_blank(),
+    panel.background = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5),
+    plot.caption = element_text(hjust = 0.5),
+    axis.text.x = element_text(hjust = 0.5),
+    axis.ticks = element_blank(),
+  ) +
+  labs(
+    title="Who are they and how old are they?",
+    x=element_blank(),
+    y="Age",
+  )
+
+if (!dir.exists(file.path("..", "plots"))) {
+  dir.create(file.path("..", "plots"))
+}
+
+ggsave("../plots/plot.svg")
+```
